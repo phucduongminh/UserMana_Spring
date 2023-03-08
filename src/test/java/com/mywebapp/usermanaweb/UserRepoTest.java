@@ -20,7 +20,7 @@ public class UserRepoTest {
     @Test
     public void testAddNew() {
         User user = new User();
-        user.setEmail("alex.ferguson@gmail.com");
+        user.setEmail("alexferguson@gmail.com");
         user.setPassword("ferguson123456");
         user.setFirstName("Alex");
         user.setLastName("Ferguson");
@@ -47,11 +47,28 @@ public class UserRepoTest {
         Integer userId = 1;
         Optional<User> optionalUser = repo.findById(userId);
         User user = optionalUser.get();
-        user.setPassword("alex123456");
+        user.setPassword("ferguson123456");
         repo.save(user);
 
         User updatedUser = repo.findById(userId).get();
-        Assertions.assertThat(updatedUser.getPassword()).isEqualTo("alex123456");
+        Assertions.assertThat(updatedUser.getPassword()).isEqualTo("ferguson123456");
 
+    }
+
+    @Test
+    public void testGet() {
+        Integer userId = 2;
+        Optional<User> optionalUser = repo.findById(userId);
+        Assertions.assertThat(optionalUser).isPresent();
+        System.out.println(optionalUser.get());
+    }
+
+    @Test
+    public void testDelete() {
+        Integer userId = 2;
+        repo.deleteById(userId);
+
+        Optional<User> optionalUser = repo.findById(userId);
+        Assertions.assertThat(optionalUser).isNotPresent();
     }
 }
