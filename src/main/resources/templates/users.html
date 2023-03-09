@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Users</title>
+    <link rel = "icon" href =
+            "https://visualpharm.com/assets/332/Management-595b40b85ba036ed117dc001.svg"
+          type = "image/x-icon">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
 </head>
 <body>
@@ -12,6 +15,7 @@
         <a class="h3" th:href="@{/users/new}">Add New User</a>
     </div>
 
+    <!--/*@thymesVar id="message" type=""*/-->
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
     </div>
@@ -35,7 +39,7 @@
                     <td>[[${user.email}]]</td>
                     <td>[[${user.firstName}]]</td>
                     <td>[[${user.lastName}]]</td>
-                    <!--td>[[${user.enabled}]]</td-->
+                    <td>[[${user.enabled}]]</td>
                     <td>
                         <a class="h4 mr-3" th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
                         <a class="h4" th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
